@@ -16,6 +16,8 @@
 		CE60A1E9296E2314001D00EB /* BitacorAPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60A1E8296E2314001D00EB /* BitacorAPPTests.swift */; };
 		CE60A1F3296E2314001D00EB /* BitacorAPPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60A1F2296E2314001D00EB /* BitacorAPPUITests.swift */; };
 		CE60A1F5296E2314001D00EB /* BitacorAPPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60A1F4296E2314001D00EB /* BitacorAPPUITestsLaunchTests.swift */; };
+		D8AC1830296F729F00FBCB70 /* BitacorApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8AC182E296F729E00FBCB70 /* BitacorApp.xcdatamodeld */; };
+		D8AC1832296F740500FBCB70 /* BitacoraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC1831296F740500FBCB70 /* BitacoraModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		CE60A1EE296E2314001D00EB /* BitacorAPPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitacorAPPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE60A1F2296E2314001D00EB /* BitacorAPPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitacorAPPUITests.swift; sourceTree = "<group>"; };
 		CE60A1F4296E2314001D00EB /* BitacorAPPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitacorAPPUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D8AC182F296F729E00FBCB70 /* BitacorApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BitacorApp.xcdatamodel; sourceTree = "<group>"; };
+		D8AC1831296F740500FBCB70 /* BitacoraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitacoraModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		CE60A1D0296E2311001D00EB /* BitacorAPP */ = {
 			isa = PBXGroup;
 			children = (
+				D8AC182D296F715400FBCB70 /* Models */,
 				CE60A1D1296E2311001D00EB /* AppDelegate.swift */,
 				CE60A1D3296E2311001D00EB /* SceneDelegate.swift */,
 				CE60A1D5296E2311001D00EB /* ViewController.swift */,
@@ -125,6 +130,15 @@
 				CE60A1F4296E2314001D00EB /* BitacorAPPUITestsLaunchTests.swift */,
 			);
 			path = BitacorAPPUITests;
+			sourceTree = "<group>";
+		};
+		D8AC182D296F715400FBCB70 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D8AC182E296F729E00FBCB70 /* BitacorApp.xcdatamodeld */,
+				D8AC1831296F740500FBCB70 /* BitacoraModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +272,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8AC1832296F740500FBCB70 /* BitacoraModel.swift in Sources */,
+				D8AC1830296F729F00FBCB70 /* BitacorApp.xcdatamodeld in Sources */,
 				CE60A1D6296E2311001D00EB /* ViewController.swift in Sources */,
 				CE60A1D2296E2311001D00EB /* AppDelegate.swift in Sources */,
 				CE60A1D4296E2311001D00EB /* SceneDelegate.swift in Sources */,
@@ -596,6 +612,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D8AC182E296F729E00FBCB70 /* BitacorApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D8AC182F296F729E00FBCB70 /* BitacorApp.xcdatamodel */,
+			);
+			currentVersion = D8AC182F296F729E00FBCB70 /* BitacorApp.xcdatamodel */;
+			path = BitacorApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CE60A1C6296E2311001D00EB /* Project object */;
 }
