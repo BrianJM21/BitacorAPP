@@ -1,16 +1,16 @@
 ### BitacorAPP
-# Academia iOS Segundo Proyecto en Equipo (MVVM)
+# Academia iOS Segundo Proyecto en Equipo (Diseño MVVM)
 ## Proyecto realizado por:
 
 # Brian Jiménez Moedano
 # David Eduardo Batista
-# Alan
+# Alan Badillo Salas
 
 ## Model
 
->BitacoraModel
+>BitacoraEntity
 ```swift
-struct BitacoraEntity {
+class BitacoraEntity {
 // El id es el identificador del incidente en la Bitacora
     let id: Int
 //El title será el nombre del incidente, el cual se desplegara en la anotacion del mapa concatenado al id
