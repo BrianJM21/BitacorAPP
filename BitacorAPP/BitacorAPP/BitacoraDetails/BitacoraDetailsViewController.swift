@@ -9,6 +9,8 @@ import UIKit
 
 class BitacoraDetailsViewController: UIViewController {
 
+    weak var viewModel: BitacoraDetailsViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

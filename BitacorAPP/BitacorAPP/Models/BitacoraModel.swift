@@ -139,10 +139,10 @@ class BitacoraModel {
         
         bitacoraToAdd.title = "Untitled"
         bitacoraToAdd.details = "No details"
-        bitacoraToAdd.created = Date.now
+        bitacoraToAdd.createAt = Date.now
         bitacoraToAdd.latitude = NSDecimalNumber(decimal: lat)
         bitacoraToAdd.longitude = NSDecimalNumber(decimal: lon)
-        bitacoraToAdd.updated = nil
+        bitacoraToAdd.updateAt = nil
         
         // Save the context and update *bitácoras* and so
         
@@ -192,7 +192,7 @@ class BitacoraModel {
                 
                 // Update and save the context
                 
-                bitacoraSelected.updated = Date.now
+                bitacoraSelected.updateAt = Date.now
                 
                 do {
                     try context.save()
