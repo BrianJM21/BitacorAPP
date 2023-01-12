@@ -22,6 +22,10 @@
 		CE60A1F5296E2314001D00EB /* BitacorAPPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60A1F4296E2314001D00EB /* BitacorAPPUITestsLaunchTests.swift */; };
 		D8AC1830296F729F00FBCB70 /* BitacorApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8AC182E296F729E00FBCB70 /* BitacorApp.xcdatamodeld */; };
 		D8AC1832296F740500FBCB70 /* BitacoraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC1831296F740500FBCB70 /* BitacoraModel.swift */; };
+		D8AC18742970AF9C00FBCB70 /* BitacoraDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC18722970AF9C00FBCB70 /* BitacoraDetailsViewController.swift */; };
+		D8AC18752970AF9C00FBCB70 /* BitacoraDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8AC18732970AF9C00FBCB70 /* BitacoraDetailsViewController.xib */; };
+		D8AC18772970AFD000FBCB70 /* BitacoraDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC18762970AFD000FBCB70 /* BitacoraDetailsView.swift */; };
+		D8AC18792970AFE900FBCB70 /* BitacoraDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AC18782970AFE900FBCB70 /* BitacoraDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		CE60A1F4296E2314001D00EB /* BitacorAPPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitacorAPPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D8AC182F296F729E00FBCB70 /* BitacorApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BitacorApp.xcdatamodel; sourceTree = "<group>"; };
 		D8AC1831296F740500FBCB70 /* BitacoraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitacoraModel.swift; sourceTree = "<group>"; };
+		D8AC18722970AF9C00FBCB70 /* BitacoraDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitacoraDetailsViewController.swift; sourceTree = "<group>"; };
+		D8AC18732970AF9C00FBCB70 /* BitacoraDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BitacoraDetailsViewController.xib; sourceTree = "<group>"; };
+		D8AC18762970AFD000FBCB70 /* BitacoraDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitacoraDetailsView.swift; sourceTree = "<group>"; };
+		D8AC18782970AFE900FBCB70 /* BitacoraDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitacoraDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,7 @@
 			children = (
 				52DDDD5E2970B16900663FDD /* BitacoraHome */,
 				D8AC182D296F715400FBCB70 /* Models */,
+				D8AC18712970AF4500FBCB70 /* BitacoraDetails */,
 				CE60A1D1296E2311001D00EB /* AppDelegate.swift */,
 				CE60A1D3296E2311001D00EB /* SceneDelegate.swift */,
 				CE60A1D5296E2311001D00EB /* ViewController.swift */,
@@ -159,6 +168,17 @@
 				D8AC1831296F740500FBCB70 /* BitacoraModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D8AC18712970AF4500FBCB70 /* BitacoraDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D8AC18722970AF9C00FBCB70 /* BitacoraDetailsViewController.swift */,
+				D8AC18732970AF9C00FBCB70 /* BitacoraDetailsViewController.xib */,
+				D8AC18762970AFD000FBCB70 /* BitacoraDetailsView.swift */,
+				D8AC18782970AFE900FBCB70 /* BitacoraDetailsViewModel.swift */,
+			);
+			path = BitacoraDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +285,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				52DDDD622970B1AB00663FDD /* BitacoraHomeViewController.xib in Resources */,
+=======
+				D8AC18752970AF9C00FBCB70 /* BitacoraDetailsViewController.xib in Resources */,
+>>>>>>> 606dbb846537892b1af115245b37ac3495a17eb3
 				CE60A1DE296E2313001D00EB /* LaunchScreen.storyboard in Resources */,
 				CE60A1DB296E2313001D00EB /* Assets.xcassets in Resources */,
 				CE60A1D9296E2311001D00EB /* Main.storyboard in Resources */,
@@ -293,10 +317,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				52DDDD662970B1E500663FDD /* BitacoraHomeViewModel.swift in Sources */,
 				52DDDD642970B1D200663FDD /* BitacoraHomeView.swift in Sources */,
+=======
+				D8AC18792970AFE900FBCB70 /* BitacoraDetailsViewModel.swift in Sources */,
+>>>>>>> 606dbb846537892b1af115245b37ac3495a17eb3
 				D8AC1832296F740500FBCB70 /* BitacoraModel.swift in Sources */,
 				D8AC1830296F729F00FBCB70 /* BitacorApp.xcdatamodeld in Sources */,
+				D8AC18772970AFD000FBCB70 /* BitacoraDetailsView.swift in Sources */,
+				D8AC18742970AF9C00FBCB70 /* BitacoraDetailsViewController.swift in Sources */,
 				CE60A1D6296E2311001D00EB /* ViewController.swift in Sources */,
 				CE60A1D2296E2311001D00EB /* AppDelegate.swift in Sources */,
 				52DDDD612970B1AB00663FDD /* BitacoraHomeViewController.swift in Sources */,
