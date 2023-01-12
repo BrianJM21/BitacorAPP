@@ -12,19 +12,19 @@ class BitacoraHomeViewController: UIViewController {
     // TODO: Documentanción definicion IBOULETS
     
     
-    weak var bitacoraHomeViewModel: BitacoraHomeViewModel?
+    weak var viewModel: BitacoraHomeViewModel?
     
     @IBOutlet weak var homeMapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let bitacoraHomeViewModel = self.bitacoraHomeViewModel {
-            bitacoraHomeViewModel.view = self
-        }
 
     }
 
+    @IBAction func goDetailsAction(_ sender: Any) {
+        
+        self.navigationController?.pushViewController(BitacoraDetailsViewController(), animated: true)
+    }
 }
 
 extension BitacoraHomeViewController: BitacoraHomeView {
