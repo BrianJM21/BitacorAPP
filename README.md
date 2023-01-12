@@ -103,5 +103,27 @@ class BitacoraModel {
     /// Creates a new *status* for the current *selected bitácora*
     func addStatusInSelectedBitacora(label: String, status: String)
 
+```
+
+##  VISTAS
+
+>BitacoraDetailsView
+
+```swift
+
+import Foundation
+
+/// Protocol needed by view-controllers with data notifiers from view-models
+protocol BitacoraDetailsView: NSObject {
+    
+    // FUNCTIONS WITH DATA NOTIFIERS FROM VIEW-MODEL
+    
+    /// Receive the current *selected bitacora* when it changes or made request
+    func bitacora(bitacoraSelected bitacora: BitacoraEntity)
+    
+    /// Receive the list of *status* of current *selectedBitacora* when it changes or made request
+    func bitacora(statusOfBitacoraSelected status: [BitacoraStatusEntity])
+    
+}
 
 ```
