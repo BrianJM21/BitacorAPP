@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		52DDDD612970B1AB00663FDD /* BitacoraHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DDDD5F2970B1AB00663FDD /* BitacoraHomeViewController.swift */; };
-		52DDDD622970B1AB00663FDD /* BitacoraHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DDDD602970B1AB00663FDD /* BitacoraHomeViewController.xib */; };
-		52DDDD642970B1D200663FDD /* BitacoraHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DDDD632970B1D200663FDD /* BitacoraHomeView.swift */; };
-		52DDDD662970B1E500663FDD /* BitacoraHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DDDD652970B1E500663FDD /* BitacoraHomeViewModel.swift */; };
+		52DDDD6D2970C17000663FDD /* BitacoraHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DDDD692970C17000663FDD /* BitacoraHomeViewController.swift */; };
+		52DDDD6E2970C17000663FDD /* BitacoraHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DDDD6A2970C17000663FDD /* BitacoraHomeViewController.xib */; };
+		52DDDD6F2970C17000663FDD /* BitacoraHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DDDD6B2970C17000663FDD /* BitacoraHomeViewModel.swift */; };
+		52DDDD702970C17000663FDD /* BitacoraHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DDDD6C2970C17000663FDD /* BitacoraHomeView.swift */; };
 		CE60A1D2296E2311001D00EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60A1D1296E2311001D00EB /* AppDelegate.swift */; };
 		CE60A1D4296E2311001D00EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60A1D3296E2311001D00EB /* SceneDelegate.swift */; };
 		CE60A1D6296E2311001D00EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60A1D5296E2311001D00EB /* ViewController.swift */; };
@@ -46,10 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		52DDDD5F2970B1AB00663FDD /* BitacoraHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitacoraHomeViewController.swift; sourceTree = "<group>"; };
-		52DDDD602970B1AB00663FDD /* BitacoraHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BitacoraHomeViewController.xib; sourceTree = "<group>"; };
-		52DDDD632970B1D200663FDD /* BitacoraHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitacoraHomeView.swift; sourceTree = "<group>"; };
-		52DDDD652970B1E500663FDD /* BitacoraHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitacoraHomeViewModel.swift; sourceTree = "<group>"; };
+		52DDDD692970C17000663FDD /* BitacoraHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitacoraHomeViewController.swift; sourceTree = "<group>"; };
+		52DDDD6A2970C17000663FDD /* BitacoraHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BitacoraHomeViewController.xib; sourceTree = "<group>"; };
+		52DDDD6B2970C17000663FDD /* BitacoraHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitacoraHomeViewModel.swift; sourceTree = "<group>"; };
+		52DDDD6C2970C17000663FDD /* BitacoraHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitacoraHomeView.swift; sourceTree = "<group>"; };
 		CE60A1CE296E2311001D00EB /* BitacorAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitacorAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE60A1D1296E2311001D00EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE60A1D3296E2311001D00EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,13 +96,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		52DDDD5E2970B16900663FDD /* BitacoraHome */ = {
+		52DDDD682970C17000663FDD /* BitacoraHome */ = {
 			isa = PBXGroup;
 			children = (
-				52DDDD5F2970B1AB00663FDD /* BitacoraHomeViewController.swift */,
-				52DDDD602970B1AB00663FDD /* BitacoraHomeViewController.xib */,
-				52DDDD632970B1D200663FDD /* BitacoraHomeView.swift */,
-				52DDDD652970B1E500663FDD /* BitacoraHomeViewModel.swift */,
+				52DDDD692970C17000663FDD /* BitacoraHomeViewController.swift */,
+				52DDDD6A2970C17000663FDD /* BitacoraHomeViewController.xib */,
+				52DDDD6B2970C17000663FDD /* BitacoraHomeViewModel.swift */,
+				52DDDD6C2970C17000663FDD /* BitacoraHomeView.swift */,
 			);
 			path = BitacoraHome;
 			sourceTree = "<group>";
@@ -130,8 +130,8 @@
 		CE60A1D0296E2311001D00EB /* BitacorAPP */ = {
 			isa = PBXGroup;
 			children = (
-				52DDDD5E2970B16900663FDD /* BitacoraHome */,
 				D8AC182D296F715400FBCB70 /* Models */,
+				52DDDD682970C17000663FDD /* BitacoraHome */,
 				D8AC18712970AF4500FBCB70 /* BitacoraDetails */,
 				CE60A1D1296E2311001D00EB /* AppDelegate.swift */,
 				CE60A1D3296E2311001D00EB /* SceneDelegate.swift */,
@@ -285,14 +285,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				52DDDD622970B1AB00663FDD /* BitacoraHomeViewController.xib in Resources */,
-=======
 				D8AC18752970AF9C00FBCB70 /* BitacoraDetailsViewController.xib in Resources */,
->>>>>>> 606dbb846537892b1af115245b37ac3495a17eb3
 				CE60A1DE296E2313001D00EB /* LaunchScreen.storyboard in Resources */,
 				CE60A1DB296E2313001D00EB /* Assets.xcassets in Resources */,
 				CE60A1D9296E2311001D00EB /* Main.storyboard in Resources */,
+				52DDDD6E2970C17000663FDD /* BitacoraHomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,19 +314,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				52DDDD662970B1E500663FDD /* BitacoraHomeViewModel.swift in Sources */,
-				52DDDD642970B1D200663FDD /* BitacoraHomeView.swift in Sources */,
-=======
 				D8AC18792970AFE900FBCB70 /* BitacoraDetailsViewModel.swift in Sources */,
->>>>>>> 606dbb846537892b1af115245b37ac3495a17eb3
+				52DDDD6D2970C17000663FDD /* BitacoraHomeViewController.swift in Sources */,
 				D8AC1832296F740500FBCB70 /* BitacoraModel.swift in Sources */,
+				52DDDD702970C17000663FDD /* BitacoraHomeView.swift in Sources */,
 				D8AC1830296F729F00FBCB70 /* BitacorApp.xcdatamodeld in Sources */,
+				52DDDD6F2970C17000663FDD /* BitacoraHomeViewModel.swift in Sources */,
 				D8AC18772970AFD000FBCB70 /* BitacoraDetailsView.swift in Sources */,
 				D8AC18742970AF9C00FBCB70 /* BitacoraDetailsViewController.swift in Sources */,
 				CE60A1D6296E2311001D00EB /* ViewController.swift in Sources */,
 				CE60A1D2296E2311001D00EB /* AppDelegate.swift in Sources */,
-				52DDDD612970B1AB00663FDD /* BitacoraHomeViewController.swift in Sources */,
 				CE60A1D4296E2311001D00EB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
