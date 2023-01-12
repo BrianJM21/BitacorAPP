@@ -9,6 +9,8 @@
 //  Changes:
 //  * [12/01/23] Definition of BitacoraDetailsViewModel class
 //  * [12/01/23] Add code (not tested)
+//  * [12/01/23] Add bitacoras subscribe to notify to view that the current selected bitácora was updated
+//  * [12/01/23] Remove auto-subscribe to the model (now is manually subscription)
 //
 
 import Foundation
@@ -32,16 +34,30 @@ class BitacoraDetailsViewModel {
     /// Subscribe to the model `$statusOfBitacoraSelected` publisher
     var statusOfBitacoraSelectedSubscriber: AnyCancellable?
     
+    /// Subscribe to the model `$bitacoras` publisher
+    ///
+    /// When we update the current selected bitácora
+    /// all the bitácoras will be updated
+    /// then when we receive the bitácoras change notification
+    /// we need to notify to the view that the current selected bitácora was updated
+    var bitacorasSubscriber: AnyCancellable?
+    
     // INITIALIZER
     
     /// Initialize new View-Model with the attached model
     init(model: BitacoraModel) {
-        self.subscribeToModel(model: model)
+        // Attach the model
+        self.model = model
     }
     
     /// Listen changes from the model
-    func subscribeToModel(model: BitacoraModel) {
-        self.model = model
+    func subscribeToModel() {
+        
+        // Verify model exists (unwrap)
+        guard let model = self.model else {
+            // TODO: There are not model
+            return
+        }
         
         // Subscribe to the current selected bitácora changes
         self.bitacoraSelectedSubscriber = model.$bitacoraSelected.dropFirst().sink {
@@ -56,6 +72,17 @@ class BitacoraDetailsViewModel {
         
         // Subscribe to the list of status of the current selected bitácora changes
         self.statusOfBitacoraSelectedSubscriber = model.$statusOfBitacoraSelected.dropFirst().sink {
+            
+            // WARNING: `self` is auto-captured by this clousure (needed)
+            [weak self] statusOfBitacoraSelected in
+            
+            // TODO: Notify to view list of status of the current selected bitácora was changed
+            self?.refreshStatusOfBitacoraSelected()
+            
+        }
+        
+        // Subscribe to the list of status of the current selected bitácora changes
+        self.bitacorasSubscriber = model.$bitacoras.dropFirst().sink {
             
             // WARNING: `self` is auto-captured by this clousure (needed)
             [weak self] statusOfBitacoraSelected in
@@ -131,6 +158,10 @@ class BitacoraDetailsViewModel {
         
         // TODO: Handle the list of status of the current selected bitácora
         view.bitacora(statusOfBitacoraSelected: model.statusOfBitacoraSelected)
+        
+    }
+    
+    func updateBitacora() {
         
     }
     

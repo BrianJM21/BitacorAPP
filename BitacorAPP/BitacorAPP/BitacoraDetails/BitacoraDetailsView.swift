@@ -8,6 +8,7 @@
 //
 //  Changes:
 //  * [12/01/23] Definition of BitacoraDetailsView protocol
+//  * [12/01/23] Add current selected bitácora updated notification
 //
 
 import Foundation
@@ -22,5 +23,8 @@ protocol BitacoraDetailsView: NSObject {
     
     /// Receive the list of *status of current selected bitácora* when it changes or made request
     func bitacora(statusOfBitacoraSelected status: [BitacoraStatusEntity])
+    
+    /// Receive the *current selected bitácora* when its finally update
+    func bitacora(bitacoraUpdated bitacora: BitacoraEntity)
     
 }
