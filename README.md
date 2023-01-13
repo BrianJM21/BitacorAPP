@@ -1,24 +1,24 @@
 # BitacorAPP
-## Academia iOS - Segundo Proyecto en Equipo (MVVM)
-### Proyecto realizado por:
+## Academia iOS - Second Team Project (using MVVM design)
 
-## Brian Jiménez Moedano - Líder de Proyecto
-## David Eduardo Batista Trujillo - Desarrollador 1
-## Alan Badillo Salas - Desarrollador 2
+### Team members:
+## Brian Jiménez Moedano - Poject Manager
+## David Eduardo Batista Trujillo - Developer 1
+## Alan Badillo Salas - Developer 2
 
-## Entidades
+## Entities
 
->BitacorAPP
+>BitacorAPP - Mantained by Alan Badillo Salas
 ```swift
 class BitacoraEntity {
 
-    let id: Int32
+    let id: Int64
     let title: String
     let details: String
     let latitude: Decimal
-    let longitud: Decimal
-    let created: Date
-    let updated: Date
+    let longitude: Decimal
+    let createAt: Date
+    let updateAt: Date
 }
 
 class BitacoraStatusEntity {
@@ -31,9 +31,9 @@ class BitacoraStatusEntity {
 }
 ```
 
-##  Modelo
+##  Model
 
->BitacoraModel
+>BitacoraModel - Mantained by Alan Salas Badillo
 
 ```swift
 import Foundation
@@ -105,9 +105,26 @@ class BitacoraModel {
 
 ```
 
-##  VISTAS
+##  Views
 
->BitacoraDetailsView
+>BitacoraHomeView - Mantained by David Eduardo Batista Trujillo
+
+```swift
+
+import Foundation
+
+// TODO: Documentanción definicion de los protocolos
+
+protocol BitacoraHomeView: NSObject {
+    
+    func bitacora(bitacoras: [BitacoraEntity])
+    
+    func bitacora(bitacoraSelected: BitacoraEntity)
+}
+
+```
+
+>BitacoraDetailsView - Mantained by Alan Badillo Salas
 
 ```swift
 
@@ -118,11 +135,112 @@ protocol BitacoraDetailsView: NSObject {
     
     // FUNCTIONS WITH DATA NOTIFIERS FROM VIEW-MODEL
     
-    /// Receive the current *selected bitacora* when it changes or made request
+    /// Receive the current *selected bitácora* when it changes or made request
     func bitacora(bitacoraSelected bitacora: BitacoraEntity)
     
-    /// Receive the list of *status* of current *selectedBitacora* when it changes or made request
+    /// Receive the list of *status* for the current *selected bitácora* when it changes or made request
     func bitacora(statusOfBitacoraSelected status: [BitacoraStatusEntity])
+    
+    /// Receive the current *selected bitácora* when it successfully updates
+    func bitacora(bitacoraUpdated bitacora: BitacoraEntity)
+    
+}
+
+```
+
+## View-Models
+
+>BitacoraHomeViewModel - Mantained by David Eduardo Batista Trujillo
+
+```swift
+
+import Foundation
+import Combine
+
+class BitacoraHomeViewModel {
+   
+    // MODEL AND VIEW BINDING
+    
+    weak var model: BitacoraModel?
+    weak var view: BitacoraHomeView?
+
+    // SUBSCRIBERS OF MODEL (WATCHERS/OBSERVABLES)
+    
+    var bitacorasSubscriber: AnyCancellable?
+    var bitacoraSelectedSubscriber: AnyCancellable?
+    
+    // INITIALIZER
+    
+    /// Initialize new *View-Model* with the attached *model* to self and start
+    /// listening to changes from the *model* with a subscriber sink method
+    init(model: BitacoraModel)
+        
+    
+    func addBitacora(latitude lat: Decimal, longitude lon: Decimal)
+    
+    
+    func selectBitacora(byId id: Int) 
+    
+}
+
+```
+
+>BitacoraDetailsViewModel - Mantained by Alan Badillo Salas
+
+```swift
+
+import Foundation
+import Combine
+
+class BitacoraDetailsViewModel {
+    
+    // MODEL AND VIEW BINDING
+    
+    /// *Model* attached
+    weak var model: BitacoraModel?
+    
+    /// *View* attached (associated view)
+    weak var view: BitacoraDetailsView?
+    
+    // SUBSCRIBERS OF MODEL (WATCHERS/OBSERVABLES)
+    
+    /// Subscribe to the *model* `$bitacoraSelected` publisher
+    var bitacoraSelectedSubscriber: AnyCancellable?
+    
+    /// Subscribe to the *model* `$statusOfBitacoraSelected` publisher
+    var statusOfBitacoraSelectedSubscriber: AnyCancellable?
+    
+    /// Subscribe to the *model* `$bitacoras` publisher
+    ///
+    /// When we update the current *selected bitácora*
+    /// all the *bitácoras* will be updated; themn,
+    /// when we receive the *bitácoras* change notification
+    /// we need to notify the view that the current *selected bitácora* was updated
+    var bitacorasSubscriber: AnyCancellable?
+    
+    // INITIALIZER
+    
+    /// Initialize new *View-Model* with the attached *model* to *self*
+    init(model: BitacoraModel)
+    
+    /// Listen changes from the *model* with a subscriber sink method
+    func subscribeToModel() 
+    
+    /// Unsubscribe *model* subscribers
+    func unsubscribeToModel() 
+    
+    /// Release the *model* and *view* if necessary
+    func dispose()
+    
+    // OPERATIONS (FROM VIEW TO MODEL)
+    
+    /// Send the current *selected bitácora* to the *view*
+    func refreshBitacoraSelected()
+    
+    /// Send the list of *status* of the current *selected bitácora* to the *view*
+    func refreshStatusOfBitacoraSelected()
+    
+    func updateBitacora()
     
 }
 
