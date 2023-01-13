@@ -109,6 +109,11 @@ extension BitacoraHomeViewController: BitacoraHomeView {
     func bitacora(bitacoras: [BitacoraEntity]) {
         // TODO: Implementación en el mapa con las bitacoras
         
+        
+        /*
+         let value = 339.09965653839
+         
+         */
         bitacoras.forEach { [weak self] bitacora in
             let mark = BitacoraAnnotation()
             
@@ -117,9 +122,7 @@ extension BitacoraHomeViewController: BitacoraHomeView {
             
             guard let latitud = bitacora.latitude else { return }
             guard let longitud = bitacora.longitude else { return }
-            
-            print("BITACORA: (\(latitud.doubleValue), \(longitud.doubleValue))")
-            
+
             mark.coordinate = CLLocationCoordinate2D(latitude: latitud.doubleValue, longitude: longitud.doubleValue)
  
             self?.homeMapView.addAnnotation(mark)
@@ -131,13 +134,22 @@ extension BitacoraHomeViewController: BitacoraHomeView {
     
     func bitacora(bitacoraSelected: BitacoraEntity) {
         
+        print("Bitácora seleccionada: \(bitacoraSelected.id)")
+        
         // TODO: Implementación en el mapa cuando la bitacora sea seleccionada
         self.titleLabel.text = bitacoraSelected.title
-        self.latlonLabel.text = "#\(bitacoraSelected.id) \(bitacoraSelected.latitude ?? 0.0) \(bitacoraSelected.longitude ?? 0.0)"
+        
+        let latitud = "\(bitacoraSelected.latitude ?? 0.0)".split(separator: ".")
+        let longitug = "\(bitacoraSelected.longitude ?? 0.0)".split(separator: ".")
+        
+        print(latitud)
+        print(longitug)
+        
+        self.latlonLabel.text = "#\(bitacoraSelected.id) (\(latitud[0]).\(latitud[0].first!), \(longitug[0]).\(latitud[0].first!))"
         
         guard let _ = bitacoraSelected.updateAt else {
             // La bitácora es nueva
-            self.goDetailsAction(nil)
+            //self.goDetailsAction(nil)
             return
         }
     
@@ -150,11 +162,13 @@ extension BitacoraHomeViewController: BitacoraHomeView {
 extension BitacoraHomeViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+        
         // Si la anotación seleccionada 
         if let bitacoraAnnotation = annotation as? BitacoraAnnotation {
             
             if let bitacora = bitacoraAnnotation.bitacora {
                 self.viewModel?.selectBitacora(byId: Int(bitacora.id))
+                //self.viewModel?.refreshBitacoras()
             }
             
         }
