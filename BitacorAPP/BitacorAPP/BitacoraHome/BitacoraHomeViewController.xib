@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment version="5120" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -24,12 +25,30 @@
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <standardMapConfiguration key="preferredConfiguration"/>
                 </mapView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mC9-cf-4jx">
+                    <rect key="frame" x="175.66666666666666" y="415.66666666666669" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuN-57-SXk">
+                    <rect key="frame" x="158.66666666666666" y="456.66666666666669" width="76" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Details"/>
+                    <connections>
+                        <action selector="goDetailsAction:" destination="-1" eventType="touchUpInside" id="MBf-JB-fPi"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Nek-Yd-uwb" secondAttribute="bottom" id="B9v-rD-Z9h"/>
+                <constraint firstItem="OuN-57-SXk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="GeI-p3-eBs"/>
+                <constraint firstItem="mC9-cf-4jx" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="TsC-5M-dcE"/>
+                <constraint firstItem="mC9-cf-4jx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cS5-2Y-2qK"/>
                 <constraint firstItem="Nek-Yd-uwb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mGo-m1-PD1"/>
+                <constraint firstItem="OuN-57-SXk" firstAttribute="top" secondItem="mC9-cf-4jx" secondAttribute="bottom" constant="20" id="tzd-QF-EWw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Nek-Yd-uwb" secondAttribute="trailing" id="vfS-pm-Wll"/>
                 <constraint firstItem="Nek-Yd-uwb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="xZE-dq-3Fc"/>
             </constraints>
