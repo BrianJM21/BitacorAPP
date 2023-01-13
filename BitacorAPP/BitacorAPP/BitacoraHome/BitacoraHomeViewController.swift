@@ -13,6 +13,12 @@ class BitacoraHomeViewController: UIViewController {
     
     
     weak var viewModel: BitacoraHomeViewModel?
+    // TODO: Documentación de Outles de la View Emergente
+    
+    
+    
+    
+    
     
     @IBOutlet weak var homeMapView: MKMapView!
     
@@ -28,6 +34,7 @@ class BitacoraHomeViewController: UIViewController {
 }
 
 extension BitacoraHomeViewController: BitacoraHomeView {
+    
     func bitacora(bitacoras: [BitacoraEntity]) {
         // TODO: Implementación en el mapa con las bitacoras
     }
