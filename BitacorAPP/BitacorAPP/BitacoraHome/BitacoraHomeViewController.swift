@@ -16,6 +16,7 @@ class BitacoraHomeViewController: UIViewController {
     // TODO: Documentación de Outles de la View Emergente
     
     
+    @IBOutlet weak var bitacotaView: UIView!
     
     
     
@@ -24,6 +25,8 @@ class BitacoraHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupView()
 
     }
 
@@ -31,6 +34,12 @@ class BitacoraHomeViewController: UIViewController {
         
         self.navigationController?.pushViewController(BitacoraDetailsViewController(), animated: true)
     }
+    
+    
+    func setupView() {
+        self.bitacotaView.layer.cornerRadius = bitacotaView.bounds.size.width / 30
+    }
+    
 }
 
 extension BitacoraHomeViewController: BitacoraHomeView {
