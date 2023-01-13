@@ -23,6 +23,7 @@ class BitacoraHomeViewController: UIViewController {
     // TODO: Documentanción definicion IBOULETS MAP
     @IBOutlet weak var homeMapView: MKMapView!
     
+    var autoloadBitacotas: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,8 @@ class BitacoraHomeViewController: UIViewController {
         // Default Location
         let initialLocation = CLLocation(latitude: 19.397956, longitude: -99.17199)
         homeMapView.centerToLocation(initialLocation)
+        
+        
         
         // Default View Pop
         setupView()
@@ -42,7 +45,13 @@ class BitacoraHomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         // TODO: Refresh bitácoras
-        self.viewModel?.refreshBitacoras()
+        
+        if autoloadBitacotas {
+            print("RECARGA TODO")
+            self.viewModel?.refreshBitacoras()
+            self.autoloadBitacotas = false
+        }
+        
     }
     
     
@@ -72,14 +81,20 @@ class BitacoraHomeViewController: UIViewController {
             let touchMapCoordinate =  self.homeMapView.convert(touchPoint, toCoordinateFrom: self.homeMapView)
             
             print(touchMapCoordinate)
-            
+    
             self.viewModel?.addBitacora(latitude: Decimal(touchMapCoordinate.latitude), longitude: Decimal(touchMapCoordinate.longitude))
             
         }
     }
 
     func setupView() {
-        self.bitacotaView.layer.cornerRadius = bitacotaView.bounds.size.width / 30
+        self.homeMapView.layer.cornerRadius = bitacotaView.bounds.size.width / 30
+//        let originalTransform = self.bitacotaView.transform
+//            let scaledTransform = originalTransform.scaledBy(x: 0.2, y: 0.2)
+//            let scaledAndTranslatedTransform = scaledTransform.translatedBy(x: 0.0, y: 250.0)
+//            UIView.animate(withDuration: 0.7, animations: {
+//                self.v.transform = scaledAndTranslatedTransform
+//            })
     }
     
 }
@@ -107,37 +122,44 @@ class BitacoraAnnotation: MKPointAnnotation {
 extension BitacoraHomeViewController: BitacoraHomeView {
     
     func bitacora(bitacoras: [BitacoraEntity]) {
-        // TODO: Implementación en el mapa con las bitacoras
         
-        bitacoras.forEach { [weak self] bitacora in
-            let mark = BitacoraAnnotation()
+        self.homeMapView.removeAnnotations(self.homeMapView.annotations)
+        
+        bitacoras.forEach {
+            [weak self] bitacora in
             
+            let mark = BitacoraAnnotation()
+    
             mark.title = bitacora.title
             mark.bitacora = bitacora
             
             guard let latitud = bitacora.latitude else { return }
             guard let longitud = bitacora.longitude else { return }
-            
-            print("BITACORA: (\(latitud.doubleValue), \(longitud.doubleValue))")
-            
+
             mark.coordinate = CLLocationCoordinate2D(latitude: latitud.doubleValue, longitude: longitud.doubleValue)
  
             self?.homeMapView.addAnnotation(mark)
+            
         }
         
         homeMapView.reloadInputViews()
-        
+                
     }
     
     func bitacora(bitacoraSelected: BitacoraEntity) {
         
-        // TODO: Implementación en el mapa cuando la bitacora sea seleccionada
         self.titleLabel.text = bitacoraSelected.title
-        self.latlonLabel.text = "#\(bitacoraSelected.id) \(bitacoraSelected.latitude ?? 0.0) \(bitacoraSelected.longitude ?? 0.0)"
+        
+        let latitud = "\(bitacoraSelected.latitude ?? 0.0)".split(separator: ".")
+        let longitug = "\(bitacoraSelected.longitude ?? 0.0)".split(separator: ".")
+        
+        self.latlonLabel.text = "#\(bitacoraSelected.id) (\(latitud[0]).\(latitud[0].first!), \(longitug[0]).\(latitud[0].first!))"
+        
+        homeMapView.reloadInputViews()
         
         guard let _ = bitacoraSelected.updateAt else {
             // La bitácora es nueva
-            self.goDetailsAction(nil)
+            //self.goDetailsAction(nil)
             return
         }
     
@@ -150,11 +172,12 @@ extension BitacoraHomeViewController: BitacoraHomeView {
 extension BitacoraHomeViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
-        // Si la anotación seleccionada 
+        
         if let bitacoraAnnotation = annotation as? BitacoraAnnotation {
             
             if let bitacora = bitacoraAnnotation.bitacora {
                 self.viewModel?.selectBitacora(byId: Int(bitacora.id))
+                //self.viewModel?.refreshBitacoras()
             }
             
         }
@@ -163,7 +186,6 @@ extension BitacoraHomeViewController: MKMapViewDelegate {
 }
 
 // MARK: extension MKmapView
-// center location
 private extension MKMapView {
   func centerToLocation(_ location: CLLocation, regionRadius: CLLocationDistance = 500) {
     let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
