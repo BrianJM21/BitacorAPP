@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UINavigationControllerD
     
     private lazy var model: BitacoraModel = {
         let model = BitacoraModel()
-        // Cargamos las bitacoras desde que se crea.
+        // Cargamos las bitacoras y los estatus de las bitacoras desde que se crea.
         model.loadBitacoras()
         model.loadStatusOfBitacoras()
         return model
@@ -53,6 +53,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UINavigationControllerD
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        
+        // Crear la vista Root
         
         let navigationController = UINavigationController()
         
