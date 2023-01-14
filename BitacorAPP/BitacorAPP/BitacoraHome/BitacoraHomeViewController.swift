@@ -24,6 +24,7 @@ class BitacoraHomeViewController: UIViewController {
     @IBOutlet weak var homeMapView: MKMapView!
     
     var autoloadBitacotas: Bool = true
+    var isHidden: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,11 @@ class BitacoraHomeViewController: UIViewController {
             print("RECARGA TODO")
             self.viewModel?.refreshBitacoras()
             self.autoloadBitacotas = false
+            
+            self.isHidden = true
+            UIView.animate(withDuration: 0.8, delay: 0) {
+                self.bitacotaView.transform = self.bitacotaView.transform.translatedBy(x: 0, y: 300)
+            }
         }
         
     }
@@ -148,6 +154,14 @@ extension BitacoraHomeViewController: BitacoraHomeView {
     
     func bitacora(bitacoraSelected: BitacoraEntity) {
         
+        if isHidden {
+            self.isHidden = false
+            
+            UIView.animate(withDuration: 0.8, delay: 0) {
+                self.bitacotaView.transform = self.bitacotaView.transform.translatedBy(x: 0, y: -300)
+            }
+        }
+        
         self.titleLabel.text = bitacoraSelected.title
         
         let latitud = "\(bitacoraSelected.latitude ?? 0.0)".split(separator: ".")
@@ -180,6 +194,13 @@ extension BitacoraHomeViewController: MKMapViewDelegate {
                 //self.viewModel?.refreshBitacoras()
             }
             
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect annotation: MKAnnotation) {
+        self.isHidden = true
+        UIView.animate(withDuration: 0.8, delay: 0) {
+            self.bitacotaView.transform = self.bitacotaView.transform.translatedBy(x: 0, y: 300)
         }
     }
     
