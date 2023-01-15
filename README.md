@@ -258,6 +258,8 @@ class BitacoraDetailsViewModel {
 
 ```
 
+## ViewControllers
+
 >BitacoraHomeViewController - Mantained by David Eduardo Batista Trujillo
 
 ```swift
@@ -273,6 +275,8 @@ class BitacoraDetailsViewModel {
 
 
 ```
+
+## SceneDelegate
 
 >SceneDelegate - Mantained by David Eduardo Batista Trujillo
 
