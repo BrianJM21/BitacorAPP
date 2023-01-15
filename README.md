@@ -113,12 +113,15 @@ class BitacoraModel {
 
 import Foundation
 
-// TODO: Documentanción definicion de los protocolos
-
+/// Protocol needed by view-controllers with data notifiers from view-model
 protocol BitacoraHomeView: NSObject {
     
+    /// Removes the current *Bitacoras Annotations* from the `homeMapView`, then recives the latest *Bitacoras*
+    ///from the model and assign it back to the `homeMapView`.
     func bitacora(bitacoras: [BitacoraEntity])
     
+    /// Updates the floating `bitacoraView` with the current *selectedBitacora*, also animates the `bitacoraView`
+    /// to apper at the bottom of the screen.
     func bitacora(bitacoraSelected: BitacoraEntity)
 }
 
@@ -130,7 +133,7 @@ protocol BitacoraHomeView: NSObject {
 
 import Foundation
 
-/// Protocol needed by view-controllers with data notifiers from view-models
+/// Protocol needed by view-controllers with data notifiers from view-model
 protocol BitacoraDetailsView: NSObject {
     
     // FUNCTIONS WITH DATA NOTIFIERS FROM VIEW-MODEL
@@ -175,12 +178,14 @@ class BitacoraHomeViewModel {
     /// listening to changes from the *model* with a subscriber sink method
     init(model: BitacoraModel)
         
-    
+    /// Updates the *model* with a newly created *Bitacora*
     func addBitacora(latitude lat: Decimal, longitude lon: Decimal)
     
+    /// Updates the *model* with the current selected *Bitacora*
+    func selectBitacora(byId id: Int)
     
-    func selectBitacora(byId id: Int) 
-    
+    /// Updates the *Bitacoras Annotations* with the lates *Bitacoras* held by the *model*
+    func refreshBitacoras()
 }
 
 ```
@@ -226,10 +231,10 @@ class BitacoraDetailsViewModel {
     /// Listen changes from the *model* with a subscriber sink method
     func subscribeToModel() 
     
-    /// Unsubscribe *model* subscribers
+    /// Unsubscribe *model* with a subsciber cancel method and a nil reference
     func unsubscribeToModel() 
     
-    /// Release the *model* and *view* if necessary
+    /// Release the *model* and *view* if necessary with a nil reference
     func dispose()
     
     // OPERATIONS (FROM VIEW TO MODEL)
@@ -237,11 +242,42 @@ class BitacoraDetailsViewModel {
     /// Send the current *selected bitácora* to the *view*
     func refreshBitacoraSelected()
     
+    /// Notify the current *selected Bitacora* was updated to the *view*
+    func notifyBitacoraUpdated() {
+    
     /// Send the list of *status* of the current *selected bitácora* to the *view*
     func refreshStatusOfBitacoraSelected()
     
-    func updateBitacora()
+    /// Adds a new *status* to the current *selected Bitacora*
+    func addStatusInSelectedBitacora(label: String, status: String)
+    
+    /// Updates the current *selected Bitacora*
+    func updateBitacora(title: String?, details: String?)
     
 }
+
+```
+
+>BitacoraHomeViewController - Mantained by David Eduardo Batista Trujillo
+
+```swift
+
+
+
+```
+
+>BitacoraDetailsViewController - Mantained by Alan Badillo Salas
+
+```swift
+
+
+
+```
+
+>SceneDelegate - Mantained by David Eduardo Batista Trujillo
+
+```swift
+
+
 
 ```
