@@ -389,7 +389,86 @@ private extension MKMapView {
 
 ```swift
 
+import UIKit
 
+class BitacoraDetailsViewController: UIViewController {
+
+    // *ViewModel* binding
+    weak var viewModel: BitacoraDetailsViewModel?
+    
+    // Subview elements for the details screen
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var detailsTextView: UITextView!
+    @IBOutlet weak var statusLabelTextField: UITextField!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusSelectMenu: UIMenu!
+    @IBOutlet weak var statusTableView: UITableView!
+    
+    var status: String?
+    
+    var statusOfSelectedBitacora: [BitacoraStatusEntity] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Sets up Navigation and Table Views
+        self.setupNavbarItem()
+        self.setupTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+    
+        // Initializes the *BitacoraSelected* and its *Status*
+        self.viewModel?.refreshBitacoraSelected()
+        self.viewModel?.refreshStatusOfBitacoraSelected(status: nil)
+    }
+    
+    // Sets up navigation view elements
+    func setupNavbarItem() 
+    
+    // Sets up data source and delegate for the statusTableView
+    func setupTableView() 
+    
+    @objc func saveSelector()
+    
+    // Sets up *status* selector element
+    @IBAction func statusSelectAction(_ sender: Any) 
+    
+    // Sets up save *status* action
+    @IBAction func statusAddAction(_ sender: Any) 
+    
+    @IBAction func screenshotAction(_ sender: Any) 
+    
+}
+
+// Details View protocol implementation
+extension BitacoraDetailsViewController: BitacoraDetailsView {
+    
+    // Updates *id*, *title* and *details* with the *bitacora Selected* info
+    func bitacora(bitacoraSelected bitacora: BitacoraEntity) 
+    
+    // Initializes the *Status* fields and reloads the statusTableView with the
+    // *status* of the selected Bitacora
+    func bitacora(statusOfBitacoraSelected status: [BitacoraStatusEntity]) 
+    
+    // When a *Bitacora's* information is updated, navigates from Details View to Home View
+    func bitacora(bitacoraUpdated bitacora: BitacoraEntity)
+    
+}
+
+// Sets up the statusTableView Data Source
+extension BitacoraDetailsViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int 
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell 
+    
+}
 
 ```
 
