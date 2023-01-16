@@ -264,7 +264,124 @@ class BitacoraDetailsViewModel {
 
 ```swift
 
+import UIKit
+import MapKit
 
+class BitacoraHomeViewController: UIViewController {
+    
+    // *ViewModel* binding
+    weak var viewModel: BitacoraHomeViewModel?
+    
+    // "Floating" subview with the *Bitacora Annotations* details
+    @IBOutlet weak var bitacoraView: UIView!
+    
+    // LabelViews for the *title*, *id* and *coordinates* of the *Bitacora Annotations*
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var latlonLabel: UILabel!
+    
+    // Map View
+    @IBOutlet weak var homeMapView: MKMapView!
+    
+    // Auxiliary logic flags for initializing the *Bitacora Anotations* in the map,
+    // and the floating subview animation
+    var autoloadBitacoras: Bool = true
+    var isHidden: Bool = true
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Default User Location
+        let initialLocation = CLLocation(latitude: 19.397956, longitude: -99.17199)
+        homeMapView.centerToLocation(initialLocation)
+        
+        // Default View Pop
+        setupView()
+        
+        // The ViewController is the Map Delegate
+        self.homeMapView.delegate = self
+        
+        // Set up the Long Press Gesture to the map
+        self.setupGestureLongPressToMap()
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        // Load *Bitacoras* at the start of the APP and hides the "floating" subview
+        if autoloadBitacotas {
+            self.viewModel?.refreshBitacoras()
+            self.autoloadBitacotas = false
+            
+            self.isHidden = true
+            UIView.animate(withDuration: 0.8, delay: 0) {
+                self.bitacotaView.transform = self.bitacotaView.transform.translatedBy(x: 0, y: 300)
+            }
+        }
+    }
+    
+    // Navigates from HomeView to DetailsView
+    @IBAction func goDetailsAction(_ sender: Any?)
+    
+    // Setup the LongPress gesture and incorporates it to the Map View
+    func setupGestureLongPressToMap() 
+    
+    // Sets up the LongPress gesture handler to recognize only the began State
+    // and associate it with the *addBitacora* functionality
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) 
+
+    // Smooth the "floating" subview corners
+    func setupView()
+    
+}
+
+// Set up the gesture recognizer delegate
+extension BitacoraHomeViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return true
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive press: UIPress) -> Bool {
+        return false
+    }
+    
+}
+
+// Bitacora Annotation inherits from the MKPointAnnotation adding a Bitacora property
+class BitacoraAnnotation: MKPointAnnotation {
+    
+    var bitacora: BitacoraEntity?
+    
+}
+
+// HomeView protocol implementation
+extension BitacoraHomeViewController: BitacoraHomeView {
+    
+    // Map view clears the current *Bitacoras Annotations*, loads the most recent *Bitacoras* from the *model*
+    // as a new array of *Bitacoras Annotations*, and refresh the Map Annotations.
+    func bitacora(bitacoras: [BitacoraEntity]) 
+    
+    // "Floating" subview is animated to appear, labels within the subview are updated with the *selected Bitacora*
+    // information
+    func bitacora(bitacoraSelected: BitacoraEntity) 
+}
+
+
+// MARK: extension MkMapViewDelegate
+extension BitacoraHomeViewController: MKMapViewDelegate {
+    
+    // Notify the *viewmodel* to update the *selected Bitacora*
+    func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) 
+    
+    // Hides the "floating" subview at deselect annotation
+    func mapView(_ mapView: MKMapView, didDeselect annotation: MKAnnotation) 
+
+// MARK: extension MKmapView
+private extension MKMapView {
+
+  // Sets up the zoom ath the user current location
+  func centerToLocation(_ location: CLLocation, regionRadius: CLLocationDistance = 500) 
+}
 
 ```
 
