@@ -478,6 +478,64 @@ extension BitacoraDetailsViewController: UITableViewDataSource {
 
 ```swift
 
+import UIKit
 
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, UINavigationControllerDelegate {
+
+    var window: UIWindow?
+    
+    // Creates a *model* instance and loads the *bitacoras* and *status* from the Core Data
+    private lazy var model: BitacoraModel = {
+        let model = BitacoraModel()
+        // Cargamos las bitacoras y los estatus de las bitacoras desde que se crea.
+        model.loadBitacoras()
+        model.loadStatusOfBitacoras()
+        
+        return model
+    }()
+    
+    // Creates a *homeViewModel* instance
+    private lazy var homeViewModel: BitacoraHomeViewModel = {
+        let homeViewModel = BitacoraHomeViewModel(model: self.model)
+        return homeViewModel
+    }()
+    
+    // Creates a *detailsViewModel* instance
+    private lazy var detailsViewModel: BitacoraDetailsViewModel = {
+        let detailsViewModel = BitacoraDetailsViewModel(model: self.model)
+        return detailsViewModel
+    }()
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        
+        // Unsubscribe details viewModel to model
+        self.detailsViewModel.view = nil
+        self.detailsViewModel.unsubscribeToModel()
+        
+        // If HomeViewController will show, bind it to its ViewModel and View
+        if let viewController = viewController as? BitacoraHomeViewController {
+            viewController.viewModel = self.homeViewModel
+            self.homeViewModel.view = viewController
+        }
+         // If DetailsViewController will show, bind it to its ViewModel, View and subscribe it to the Model
+        if let viewController = viewController as? BitacoraDetailsViewController {
+            viewController.viewModel = self.detailsViewModel
+            self.detailsViewModel.view = viewController
+            self.detailsViewModel.subscribeToModel()
+        }
+    }
+
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    
+        // Sets up the Navigation Root View Controller
+        let navigationController = UINavigationController()
+        
+        navigationController.delegate = self
+        
+        navigationController.pushViewController(BitacoraHomeViewController(), animated: false)
+        
+        self.window?.rootViewController = navigationController
+        
+    }
 
 ```
